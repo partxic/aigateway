@@ -1,0 +1,14 @@
+{
+    "name": "hono-vue-starter",
+    "type": "module",
+    "scripts": {
+        "deploy": "wrangler deploy",
+        "dev": "wrangler dev"
+    },
+    "dependencies": {
+        "hono": "^4.12.31"
+    },
+    "devDependencies": {
+        "wrangler": "^4.113.0"
+    }
+}

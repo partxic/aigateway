@@ -102,13 +102,9 @@ compat.post('/:path{.*}', async c => {
     const user = c.get('user')
     console.log(`${user.id}(${user.name}) -> {${provider.name}}/${path} : ${body.model}`)
 
-    const reqHeaders = new Headers()
-    reqHeaders.set('Authorization', `Bearer ${provider.key}`)
-    reqHeaders.set('Content-Type', c.req.header('Content-Type'))
-
     return fetch(`${provider.url}/${path}`, {
         method: 'POST',
-        headers: reqHeaders,
+        headers: { Authorization: `Bearer ${provider.key}` },
         body: JSON.stringify(body)
     })
 })

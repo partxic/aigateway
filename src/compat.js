@@ -104,7 +104,7 @@ compat.post('/:path{.*}', async c => {
 
     return fetch(`${provider.url}/${path}`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${provider.key}` },
+        headers: { Authorization: `Bearer ${provider.key}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
     })
 })

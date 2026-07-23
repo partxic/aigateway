@@ -31,4 +31,7 @@ api.route('/user', user)
 import provider from './provider.js'
 api.route('/provider', provider)
 
+import compat from './compat.js'
+api.route('/compat', compat)
+
 export default api

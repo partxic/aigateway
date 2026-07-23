@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 const compat = new Hono()
 
 import { cors } from 'hono/cors'
-compat.use(cors())
+compat.use('*', cors())
 
 import { providers } from './db.js'
 import db from './db.js'
@@ -106,7 +106,7 @@ compat.post('/:path{.*}', async c => {
     reqHeaders.set('Authorization', `Bearer ${provider.key}`)
     reqHeaders.set('Content-Type', c.req.header('Content-Type'))
 
-    return await fetch(`${provider.url}/${path}`, {
+    return fetch(`${provider.url}/${path}`, {
         method: 'POST',
         headers: reqHeaders,
         body: JSON.stringify(body),

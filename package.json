@@ -1,5 +1,5 @@
 {
-    "name": "hono-vue-starter",
+    "name": "aigateway",
     "type": "module",
     "scripts": {
         "deploy": "wrangler deploy",

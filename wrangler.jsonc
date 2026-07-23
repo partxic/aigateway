@@ -1,13 +1,27 @@
 {
-    "name": "hono-vue-starter",
+    "name": "aigateway",
     "main": "src/app.js",
     "compatibility_date": "2026-05-11",
     "compatibility_flags": ["nodejs_compat"],
+    "observability": {
+        "logs": {
+            "enabled": true,
+            "invocation_logs": true
+        }
+    },
     "assets": {
         "directory": "./web/dist/",
         "binding": "assets"
     },
     "build": {
         "command": "npm install && cd web && npm install && npm run build"
-    }
+    },
+    "d1_databases": [
+        {
+            "binding": "db",
+            "database_name": "aigateway-db",
+            "database_id": "a0e7edc4-197c-4482-943c-0748f1426810",
+            "remote": true
+        }
+    ]
 }

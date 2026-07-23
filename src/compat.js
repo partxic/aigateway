@@ -109,11 +109,7 @@ compat.post('/:path{.*}', async c => {
     return fetch(`${provider.url}/${path}`, {
         method: 'POST',
         headers: reqHeaders,
-        body: JSON.stringify(body),
-        cf: {
-            cacheTtl: 0,
-            cacheEverything: false
-        }
+        body: JSON.stringify(body)
     })
 })
 

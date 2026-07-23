@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 const compat = new Hono()
 
 import { cors } from 'hono/cors'
-compat.use('*', cors())
+compat.use(cors())
 
 import { providers } from './db.js'
 import db from './db.js'

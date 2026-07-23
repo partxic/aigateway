@@ -100,7 +100,7 @@ compat.post('/:path{.*}', async c => {
     }
 
     const user = c.get('user')
-    console.log(`${user.id}(${user.name}) -> {${provider.name}}/${path} : ${body.model}`)
+    console.log(`${user.id}(${user.name}) -> /${path} -> ${provider.name}/${body.model}`)
 
     return fetch(`${provider.url}/${path}`, {
         method: 'POST',

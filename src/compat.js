@@ -106,7 +106,7 @@ compat.post('/:path{.*}', async c => {
     reqHeaders.set('Authorization', `Bearer ${provider.key}`)
     reqHeaders.set('Content-Type', c.req.header('Content-Type'))
 
-    return fetch(`${provider.url}/${path}`, {
+    return await fetch(`${provider.url}/${path}`, {
         method: 'POST',
         headers: reqHeaders,
         body: JSON.stringify(body),

@@ -6,13 +6,13 @@ api.use(async (c, next) => {
     if (typeof host !== 'string') host = c.req.header('host')
     else host = host.split(',')[0].trim()
     c.set('host', host)
-    await next()
+    return await next()
 })
 
 api.use(async (c, next) => {
     if (typeof c.env.jwt_secret !== 'string' || c.env.jwt_secret === '') return c.text('加密密钥配置错误', 500)
     if (typeof c.env.db === 'undefined') return c.text('数据库未绑定', 500)
-    await next()
+    return await next()
 })
 
 api.get('/status', c => {
@@ -24,5 +24,8 @@ api.route('/auth', auth)
 
 import account from './account.js'
 api.route('/account', account)
+
+import user from './user.js'
+api.route('/user', user)
 
 export default api

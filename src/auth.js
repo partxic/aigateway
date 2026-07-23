@@ -52,7 +52,7 @@ export const needAuth = async (c, next) => {
         return c.text('验证失败', 401)
     }
 
-    await next()
+    return await next()
 }
 
 auth.get('/status', needAuth, c => {

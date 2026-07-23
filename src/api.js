@@ -22,4 +22,7 @@ api.get('/status', c => {
 import auth from './auth.js'
 api.route('/auth', auth)
 
+import account from './account.js'
+api.route('/account', account)
+
 export default api

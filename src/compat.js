@@ -54,7 +54,7 @@ compat.use(async (c, next) => {
     return await next()
 })
 
-compat.get('/:version(v1/)?models', async c => {
+compat.get('/:version{v1/}?models', async c => {
     const user = c.get('user')
     console.log(`${user.id}(${user.name}) -> /models`)
 
@@ -85,7 +85,7 @@ compat.get('/:version(v1/)?models', async c => {
     return c.json(result, 200)
 })
 
-compat.post('/:version(v1/)?:path{.*}', async c => {
+compat.post('/:version{v1/}?:path{.*}', async c => {
     const { path } = c.req.param()
     const body = await c.req.json()
     const { model } = body

@@ -102,9 +102,22 @@ compat.post('/:path{.*}', async c => {
     const user = c.get('user')
     console.log(`${user.id}(${user.name}) -> /${path} -> ${provider.name}/${body.model}`)
 
+    const reqHeader = new Headers()
+    reqHeader.set('Authorization', `Bearer ${provider.key}`)
+    reqHeader.set('Content-Type', 'application/json; charset=UTF-8')
+
+    const allowedPrefixes = ['x-', 'anthropic-', 'user-']
+    for (const [key, value] of Object.entries(c.req.header())) {
+        const lowerKey = key.toLowerCase()
+        const isAllowed = allowedPrefixes.some(prefix => lowerKey.startsWith(prefix.toLowerCase()))
+        if (isAllowed) {
+            reqHeader.set(key, value)
+        }
+    }
+
     return fetch(`${provider.url}/${path}`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${provider.key}`, 'Content-Type': 'application/json' },
+        headers: reqHeader,
         body: JSON.stringify(body)
     })
 })
